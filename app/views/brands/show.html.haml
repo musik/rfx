@@ -1,0 +1,13 @@
+-title @brand.name
+%ul.item-attrs
+  -%w(name slug priority items_count).each do |r|
+    %li
+      %span #{t("activerecord.attributes.brand.#{r}")}:
+      =@brand.send r
+
+
+%hr.small
+.text-center
+  -if policy(@brand).update?
+    = link_to '编辑', edit_brand_path(@brand),class: "btn btn-primary"
+  = link_to '返回', brands_path,class: "btn btn-default"

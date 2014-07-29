@@ -1,13 +1,14 @@
-%h3 Welcome
-- if user_signed_in?
-  - if current_user.admin?
-    %h3 Admin
-    %p
-      = link_to 'User count:', users_path
-      = User.count
+.container
+  %h3 欢迎访问普洱茶批发系统
+  - if user_signed_in?
+    - if current_user.admin?
+      %h3 Admin
+      %p
+        = link_to 'User count:', users_path
+        = User.count
+    - else
+      %h3 You've signed up. Download a free book.
+      = link_to 'Download PDF', products_path('product.pdf'), :class => 'btn btn-success btn-large'
   - else
-    %h3 You've signed up. Download a free book.
-    = link_to 'Download PDF', products_path('product.pdf'), :class => 'btn btn-success btn-large'
-- else
-  %h3 Sign up and download a free book.
-  = link_to 'Sign up', new_user_registration_path, :class => 'btn btn-primary btn-large'
+    %h3 批发普洱茶
+    = link_to '免费注册', new_user_registration_path, :class => 'btn btn-primary btn-large'

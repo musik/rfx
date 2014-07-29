@@ -1,0 +1,28 @@
+-title @item.title
+.row
+  .col-md-4
+    =image_tag @item.photo.url(:medium)
+  .col-md-8
+    %h3=@item.title
+    %ul.item-attrs
+      %li.price-li
+        %span 单价:
+        %val
+          <price>￥#{@item.price}</price> / #{@item.unit}
+      -%w(sn name year spec made_by).each do |r|
+        %li
+          %span #{t("activerecord.attributes.item.#{r}")}:
+          =@item.send r
+      -%w(moq stock).each do |r|
+        %li
+          %span #{t("activerecord.attributes.item.#{r}")}:
+          =@item.send r
+          =@item.unit
+
+%hr.small
+.text-center
+  -if policy(@item).update?
+    = link_to '编辑', edit_item_path(@item),class: "btn btn-primary"
+  -if policy(@item).destroy?
+    = link_to '删除', @item, :method => :delete, :data => { :confirm => 'Are you sure?' },class: "btn btn-danger"
+  = link_to '返回', items_path,class: "btn btn-default"

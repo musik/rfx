@@ -7,9 +7,21 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    <link href="assets/favicon.png" rel="shortcut icon" type="image/x-icon" />
   %body
     %header
       = render 'layouts/navigation'
     %main{:role => "main"}
       = render 'layouts/messages'
-      = yield
+      -if @full
+        = yield
+      -else
+        -if show_title?
+          %header.title
+            .container
+              %h1= yield :header
+        .container
+          -unless @hide_bread
+            .breadcrumb.mt1e= breadcrumbs.render :format=>:inline, :separator => '/'
+          .content
+            = yield

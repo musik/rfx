@@ -1,0 +1,15 @@
+-title '用户管理'
+
+.row
+  .column
+    %table.table.table-bordered
+      %thead
+        %tr
+          %th 用户名
+          %th Email
+          %th 变更身份
+          %th 特殊操作
+      %tbody
+        - @users.each do |user|
+          %tr
+            = render user

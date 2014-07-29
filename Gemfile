@@ -1,5 +1,7 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 ruby '2.1.2'
+gem 'rb-readline'
+gem 'pry-coolline'
 gem 'rails', '4.1.4'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
@@ -44,3 +46,9 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
 end
+
+
+gem 'paperclip'
+gem "jquery-fileupload-rails"
+gem 'breadcrumbs'
+gem 'rails-i18n', '~> 4.0.0' 

@@ -1,0 +1,8 @@
+%td= link_to (user.name || '--'), user
+%td= user.email
+%td
+  = form_for(user) do |f|
+    = f.select(:role, User.roles.keys.map {|role| [t("role.#{role}"),role]})
+    = f.submit '更改身份', :class => 'button-xs'
+%td
+  = link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button-xs') unless user == current_user

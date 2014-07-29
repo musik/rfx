@@ -3,11 +3,13 @@
   .container
     .navbar-header
       %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
+        %span.sr-only 展开菜单
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to 'Home', root_path, class: 'navbar-brand'
+      = link_to '首页', root_path, class: 'navbar-brand'
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
+        %li= link_to '商品', items_path
+      %ul.nav.navbar-nav.pull-right
         = render 'layouts/navigation_links'

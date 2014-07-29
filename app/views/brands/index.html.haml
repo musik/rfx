@@ -1,0 +1,25 @@
+-title "品牌管理"
+%table.table
+  %tr
+    %th 名称
+    %th 字母简写
+    %th 排序
+    %th 商品数
+    %th
+
+  - @brands.each do |brand|
+    %tr
+      %td=link_to  brand.name,brand
+      %td= brand.slug
+      %td= brand.priority
+      %td= brand.items_count
+      %td
+        = link_to '编辑', edit_brand_path(brand),class: "btn btn-success"
+        = link_to '删除', brand, :method => :delete, :data => { :confirm => 'Are you sure?' },class: "btn btn-danger"
+
+
+
+%hr.small
+.text-center
+  -if policy(Brand).new?
+    = link_to '添加品牌', new_brand_path,class: "btn btn-primary"
